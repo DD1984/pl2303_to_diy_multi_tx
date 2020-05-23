@@ -10,6 +10,8 @@
 #include <sys/ioctl.h>
 #include <endian.h>
 
+#define TTY_DEV "/dev/ttyUSB0"
+
 #define MAX_CH 16
 #define RESOLUTION_BIT 11
 #define MB (MAX_CH * RESOLUTION_BIT / 8)
@@ -137,7 +139,7 @@ void main(int argc, char *argv[])
 		return;
 	}
 
-	int fd = serial_open("/dev/ttyUSB0", 100000);
+	int fd = serial_open(TTY_DEV, 100000);
 	if ( fd < 0) {
 		printf("serial_open() err\n");
 		return;
